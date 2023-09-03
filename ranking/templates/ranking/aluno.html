@@ -1,0 +1,18 @@
+{% extends 'ranking/base.html' %}
+{% block title %}Aluno {{ aluno.nome }}{% endblock %}
+{% block content %}
+<h1>Aluno: {{ aluno.nome }}</h1>
+<h2>Escola</h2>
+<p><a href="{% url 'escola' aluno.escola.id %}">{{ aluno.escola.nome }}</a></p>
+<h2>Notas</h2>
+<ul>
+    {% for nota in notas %}
+    <li>{{ nota }}</li>
+    {% empty %}
+    <li>Sem notas cadastradas ainda</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+{% block content_footer %}
+<p><a href="{% url 'index'%}">Ver Pódio</a></p>
+{% endblock %}

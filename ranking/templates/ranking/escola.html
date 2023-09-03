@@ -1,0 +1,14 @@
+{% extends 'ranking/base.html' %}
+{% block title %}Escola {{ escola.nome }}{% endblock %}
+{% block content %}
+<h1>Escola: {{ escola.nome }}</h1>
+<h2>Ranking</h2>
+<ol>
+    {% for aluno in alunos %}
+    <li><a href="{% url 'aluno' aluno.id %}">{{ aluno.nome }}</a> - {{ aluno.pontuacao }} pontos</li>
+    {% endfor %}
+</ol>
+{% endblock %}
+{% block content_footer %}
+<p><a href="{% url 'index'%}">Ver Pódio</a></p>
+{% endblock %}

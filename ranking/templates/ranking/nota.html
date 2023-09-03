@@ -1,0 +1,26 @@
+{% extends 'ranking/base.html' %}
+{% block title %}Inserir Nota{% endblock %}
+{% block content %}
+<h1>Inserir/Atualizar Nota</h1>
+<form method="post" action="{% url 'nota' %}">
+    {% csrf_token %}
+    <label for="tipo">Tipo:</label>
+    <select id="tipo" name="tipo">
+        <option value="T">Tarefa</option>
+        <option value="D">Desafio</option>
+        <option value="P">Projeto</option>
+    </select>
+    <label for="valor">Valor:</label>
+    <input id="valor" name="valor" type="number" min="0" max="100">
+    <label for="aluno">Aluno:</label>
+    <select id="aluno" name="aluno"> 
+        {% for aluno in alunos %}
+        <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Enviar">
+</form>
+{% endblock %}
+{% block content_footer %}
+<p><a href="{% url 'index'%}">Ver Pódio</a></p>
+{% endblock %}

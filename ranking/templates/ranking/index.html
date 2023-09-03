@@ -1,0 +1,19 @@
+{% extends 'ranking/base.html' %}
+{% load static %}
+{% block title %}Ranking de Alunos{% endblock %}
+{% block content %}
+<h1>Ranking de Alunos</h1>
+<h3><a href="{% url 'nota'%}">Cadastrar nota</a></h3>
+<h2>Escolas</h2>
+<ul>
+    {% for escola in escolas %}
+    <li><a href="{% url 'escola' escola.id %}">{{ escola.nome }}</a></li>
+    {% endfor %}
+</ul>
+<h2>Pódio</h2>
+<ol>
+    {% for aluno in podio %}
+    <li><a href="{% url 'aluno' aluno.id %}">{{ aluno.nome }}</a> - {{ aluno.pontuacao }} pontos</li>
+    {% endfor %}
+</ol>
+{% endblock %}
